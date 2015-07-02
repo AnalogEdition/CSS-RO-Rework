@@ -1,0 +1,208 @@
+PART
+{
+// --- general parameters ---
+name = CSSOMSEngineRight
+module = Part
+author = Rocket2guns
+RSSROConfig = True
+
+// --- asset parameters ---
+MODEL
+{
+  model = CSS/Parts/CSSEngines/OMS
+  scale = 1.5, 1.5, 1.5
+}
+
+scale = 1.5
+rescaleFactor = 1.265
+
+// --- node definitions ---
+node_stack_top = 0.0, 0, 0.0, 0.0, 1, 0
+
+// --- FX definitions ---
+
+//fx_exhaustFlame_blue_small = 0.0, -21.0, 0.0, 0.0, 1.0, 0.0, running
+//fx_exhaustLight_blue = 0.0, -21.0, 0.0, 0.0, 0.0, 1.0, running
+//fx_smokeTrail_light  = 0.0, -21.0, 0.0, 0.0, 1.0, 0.0, running
+
+// --- Sound FX definition ---
+
+//sound_vent_medium = engage
+//sound_rocket_hard = running
+//sound_vent_soft = disengage
+//sound_explosion_low = flameout
+
+// --- editor parameters ---
+cost = 850
+category = Propulsion
+subcategory = 0
+title = CSS OMS Engine Left
+manufacturer = Aerojet
+description = Aerojet AJ10-190 as found on the SpaceShuttle Orbital Manoeuvring System (OMS)
+
+// attachment rules: stack, srfAttach, allowStack, allowSrfAttach, allowCollision
+attachRules = 1,0,1,0,0
+
+// --- standard part parameters ---
+mass = 0.118
+dragModelType = default
+maximum_drag = 0.2
+minimum_drag = 0.2
+angularDrag = 2
+crashTolerance = 7
+maxTemp = 1973.15
+
+stagingIcon = LIQUID_ENGINE
+
+    EFFECTS
+    {
+        powerflame
+        {
+            MODEL_MULTI_PARTICLE
+            {
+                name = flamethrust
+                modelName = CSS/FX/flameoms
+		transformName = thrustTransform
+                emission = 0.0 0.0
+                emission = 0.05 0.99
+                emission = 0.75 1.21
+                emission = 1.0 1.25
+                speed = 0.0 1.70
+                speed = 1.0 1.65
+            }
+            AUDIO
+            {
+                clip = CSS/Sounds/sound_oms
+                volume = 0.0 0.0
+                volume = 1.0 1.0
+                pitch = 0.0 0.2
+                pitch = 1.0 1.0
+                loop = true
+            }
+        }
+        powersmoke
+        {
+
+        }
+        engage
+        {
+            AUDIO
+            {
+                channel = Ship
+                clip = sound_vent_medium
+                volume = 1.0
+                pitch = 2.0
+                loop = false
+            }
+        }
+        disengage
+        {
+            AUDIO
+            {
+                channel = Ship
+                clip = sound_vent_soft
+                volume = 1.0
+                pitch = 2.0
+                loop = false
+            }
+        }
+        flameout
+        {
+            AUDIO
+            {
+                channel = Ship
+                clip = sound_explosion_low
+                volume = 1.0
+                pitch = 2.0
+                loop = false
+            }
+        }
+    }
+
+MODULE
+{
+	name = ModuleEnginesFX
+	runningEffectName = powersmoke
+	directThrottleEffectName = powerflame
+	thrustVectorTransformName = thrustTransform
+	exhaustDamage = True
+	ignitionThreshold = 0.1
+	minThrust = 26.7
+	maxThrust = 26.7
+	heatProduction = 17.5
+	fxOffset = 0, 0, 0.8
+	PROPELLANT
+	{
+		name = MMH
+		DrawGauge = True
+		ratio = 0.504
+	}
+	PROPELLANT
+	{
+		name = NTO
+		ratio = 0.496
+	}
+	atmosphereCurve
+ 	{
+   	 key = 0 316
+  	 key = 1 100
+ 	}
+	
+}
+MODULE
+{
+	name = ModuleEngineConfigs
+	type = ModuleEngines
+	modded = false
+	configuration = AJ10-190
+	CONFIG
+	{
+		name = AJ10-190
+		minThrust = 26.7
+		maxThrust = 26.7
+		heatProduction = 17.5
+		PROPELLANT
+		{
+			name = MMH
+			ratio = 0.504
+			DrawGauge = True
+		}
+		PROPELLANT
+		{
+			name = NTO
+			ratio = 0.496
+		}
+		atmosphereCurve
+		{
+			key = 0 316
+			key = 1 100
+		}
+	}
+}
+MODULE
+{
+	name = ModuleEngineIgnitor
+	ignitionsAvailable = -1
+	autoIgnitionTemperature = 500
+	ignitorType = Hypergolic
+	useUllageSimulation = true
+	isPressureFed = true
+	IGNITOR_RESOURCE
+	{
+		name = ElectricCharge
+		amount = 0.5
+	}
+}
+
+MODULE
+{
+    name = KM_Gimbal_3
+	gimbalTransformName = thrustTransform
+	yawGimbalRange = 8.5
+	pitchGimbalRange = 15
+	responseSpeed = 40
+	enableRoll = True
+	enableSmoothGimbal = True
+}
+
+}

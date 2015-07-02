@@ -1,0 +1,72 @@
+PART
+{
+// --- Kerbal Space Program - Part CFG File --- //
+// Model and Texture by Jordan Cox (JordanCox2) //
+
+// --- GENERAL PARAMETERS --- //
+name = CSS_SRBDecoupler
+module = Part
+author = JordanCox2
+RSSROConfig = True
+
+// --- ASSET PARAMETERS --- //
+mesh = model.mu
+scale = 1.0
+specPower = 0.5
+rimFalloff = 3
+alphaCutoff = 0
+rescaleFactor = 2.3
+
+// --- NODE DEFINITIONS --- //
+node_attach = 0.1, 0.0, 0.0, 1.0, 0.0, 0.0
+
+// --- FX DEFINITIONS | Not Applicable --- //
+
+// --- SOUND FX DEFINITIONS --- //
+sound_vent_large = activate
+
+// --- EDITOR PARAMETERS --- //
+cost = 500
+category = 2
+subcategory = 0
+title = CSS 5 Segment SRB Decoupler
+manufacturer = Industrial Flames & Explosions, Inc.
+description = Liquid fuel alone won't get the job done! Strap a few SRB's onto your rocket with these radial decouplers.
+
+// --- ATTACHMENT RULES --- //
+attachRules = 0,1,0,1,0
+
+// --- STANDARD PART PARAMETERS --- //
+mass = 1.0
+dragModelType = default
+maximum_drag = 0.3
+minimum_drag = 0.2
+angularDrag = 0.2
+crashTolerance = 50
+maxTemp = 1800
+breakingForce = 1e37
+breakingTorque = 1e37
+fuelCrossFeed = False
+
+stageOffset = 1
+childStageOffset = 1
+
+// --- Stage Separator parameters ---
+
+stagingIcon = DECOUPLER_HOR
+
+MODULE
+{
+    name = ModuleAnchoredDecoupler
+    anchorName = anchor
+    ejectionForce = 60
+    explosiveNodeID = srf
+}
+
+// --- COPYRIGHT INFORMATION --- //
+// This model, texture, and configuration is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+// For more information, visit: http://creativecommons.org/licenses/by-nc-nd/3.0/
+
+// --- THIS FILE HAS BEEN MODIFIED FROM ITS ORIGINAL VERSION --- //
+// MODIFICATION AND DISTRIBUTION HAS BEEN APPROVED BY JORDANCOX2 //
+}

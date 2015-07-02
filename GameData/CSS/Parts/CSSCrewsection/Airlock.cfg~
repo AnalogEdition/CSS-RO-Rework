@@ -1,0 +1,67 @@
+
+PART
+{
+// --- general parameters ---
+name = CSSAirlock_RO
+module = Part
+author = Rocket2guns
+
+// --- asset parameters ---
+MODEL
+{
+  model = CSS/Parts/CSSCrewsection/Airlock
+  scale = 1.5, 1.5, 1.5
+}
+
+scale = 1.5
+rescaleFactor = 1.4
+
+
+// --- node definitions ---
+// definition format is Position X, Position Y, Position Z, Up X, Up Y, Up Z
+
+node_stack_dock = -0.01, -1.251, -0.789, 0, 0, 1
+node_stack_top = -0.01855999, -0.4264, 0.52584, 0, 1, 0
+node_stack_bottom = -0.01855999, -1.6664, 0.52584, 0, 1, 0
+
+CoMOffset = 0, -3, 1.5
+
+// --- editor parameters ---
+cost = 600
+category = Pods
+subcategory = 0
+title = CSS Airlock
+manufacturer = Boeing/Rockwell
+description = Airlock
+
+// attachment rules: stack, srfAttach, allowStack, allowSrfAttach, allowCollision
+attachRules = 1,0,1,1,0
+
+// --- standard part parameters ---
+mass = 4
+dragModelType = default
+maximum_drag = 0.2
+minimum_drag = 0.15
+angularDrag = 2
+crashTolerance = 50
+maxTemp = 1973.15
+
+breakingForce = 160000
+breakingTorque = 160000
+
+// --- pod/rcs parameters ---
+
+// --- tweakables (coming soon...) ---
+
+//vesselType = Ship
+
+// --- internal setup ---
+CrewCapacity = 2
+
+INTERNAL
+{
+  name = GenericSpace3
+}
+
+//// ----- DO NOT EDIT BELOW THIS POINT ------
+}
